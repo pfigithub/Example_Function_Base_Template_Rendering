@@ -6,5 +6,12 @@ class Contact(models.Model):
     email = models.EmailField()
     subject = models.CharField(max_length=50)
     text = models.TextField()
-    created_date = models.TimeField(auto_now_add=True)
-    updated_date = models.TimeField(auto_now=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['created_date']
+
+
+    def __str__(self):
+        return self.name
