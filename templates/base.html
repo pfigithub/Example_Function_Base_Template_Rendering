@@ -64,13 +64,13 @@
                     <ul class="nav-menu">
                         <li><a href="{% url 'web:index' %}">Home</a></li>
                         <li><a href="{% url 'web:about' %}">About</a></li>
-                        <li class="blog"><a href="">Blog</a>
-                            <ul>
-                                <li><a href="{% url 'index_blog' %}">Blog Home</a></li>
-                                <li><a href="{% url 'single' %}">Blog Single</a></li>
-                            </ul>
+                        <li><a href="{% url 'blog:index_blog' %}">Blog</a></li>
+                        <li><a href="{% url 'web:contact' %}">Contact</a></li>
+
+
+
                         </li>
-                        <li class="menu-has-children"><a href="">Pages</a>
+                        <!-- <li class="menu-has-children"><a href="">Pages</a>
                             <ul>
                                 <li><a href="elements.html">Elements</a></li>
                                 <li class="menu-has-children"><a href="">Level 2 </a>
@@ -79,10 +79,9 @@
                                         <li><a href="#">Item Two</a></li>
                                     </ul>
                                 </li>
-                            </ul>
-                        </li>
-                        <li><a href="{% url 'web:contact' %}">Contact</a></li>
-                    </ul>
+                            </ul> --> -->
+                        <!-- </li>
+                    </ul> -->
                 </nav><!-- #nav-menu-container -->
             </div>
         </div>
