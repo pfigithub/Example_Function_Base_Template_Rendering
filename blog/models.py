@@ -1,11 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Post(models.Model):
-    # image
+    image = models.ImageField(upload_to='blog/', default='blog/default.jpg')
     # category
     # tag
-    # author
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=250)
     content = models.TextField()
     counted_views = models.IntegerField(default= 0)
