@@ -8,7 +8,7 @@ from blog.models import Post
 class PostAdmin(admin.ModelAdmin):
     date_hierarchy = "created_date"
     empty_value_display = "-empty-" 
-    list_display = ('title','status','created_date','published_date','updated_date','counted_views')  
+    list_display = ('title','status','author','created_date','published_date','updated_date','counted_views')  
     list_filter = ('status','counted_views')
     search_fields = ['title','content']
 
