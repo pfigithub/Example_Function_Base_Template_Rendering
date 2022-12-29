@@ -13,7 +13,7 @@ def blog_view(req, **kwargs):
     posts = Paginator(posts,2)
     
     try:
-        page_number = req.Get.get('page')
+        page_number = req.GET.get('page')
         posts = posts.get_page(page_number)
     except PageNotAnInteger:
         posts = posts.get_page(1)
