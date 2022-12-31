@@ -1,5 +1,9 @@
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from app1.forms import ContactForm, NewsletterForm
+from django.contrib import messages
+
+
 def index(req):
     return render(req, 'website/index.html')
 
@@ -11,6 +15,9 @@ def contact(req):
         form = ContactForm(req.POST)
         if form.is_valid():
             form.save()
+            messages.add_message(req, messages.SUCCESS, 'your ticket submitted successfully')
+        else:
+            messages.add_message(req, messages.ERROR, 'your ticket did not submitted')
     form = ContactForm()
     return render(req, 'website/contact.html', {'form':form})
 
@@ -20,7 +27,7 @@ def newsletter_view(req):
         form = NewsletterForm(req.POST)
         if form.is_valid():
             form.save()
-            Http
+            return HttpResponseRedirect('/')
     else:
-        return Http
+        return HttpResponseRedirect('/')
 
