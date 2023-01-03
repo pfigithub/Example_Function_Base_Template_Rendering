@@ -40,12 +40,21 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django.contrib.sites',
     'django_extensions',
+    'robots',
     'django.contrib.sitemaps',
     'app1.apps.App1Config',
     'blog.apps.BlogConfig'
 ]
 
+# sites framework
+
 SITE_ID = 2
+
+# robots
+
+ROBOTS_USE_HOST = False
+ROBOTS_USE_SITEMAP = False
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
