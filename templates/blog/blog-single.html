@@ -98,20 +98,6 @@
 							<p class="excert">
 								{{post.content}}
 							</p>
-							<!-- <p>
-								Boot camps have its supporters and its detractors. Some people do not understand why you
-								should have to spend money on boot camp when you can get the MCSE study materials
-								yourself at a fraction of the camp price. However, who has the willpower to actually sit
-								through a self-imposed MCSE training. who has the willpower to actually sit through a
-								self-imposed
-							</p>
-							<p>
-								Boot camps have its supporters and its detractors. Some people do not understand why you
-								should have to spend money on boot camp when you can get the MCSE study materials
-								yourself at a fraction of the camp price. However, who has the willpower to actually sit
-								through a self-imposed MCSE training. who has the willpower to actually sit through a
-								self-imposed
-							</p> -->
 						</div>
 
 					</div>
@@ -278,20 +264,25 @@
 				</div>
 				<div class="col-lg-4 sidebar-widgets">
 					<div class="widget-wrap">
-						<div class="single-sidebar-widget search-widget">
+						<!-- <div class="single-sidebar-widget search-widget">
 							<form class="search-form" action="#">
 								<input placeholder="Search Posts" name="search" type="text"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
 								<button type="submit"><i class="fa fa-search"></i></button>
 							</form>
-						</div>
+						</div> -->
+						
+						{% include 'blog/blog-search.html' %}
+
 						{% include 'blog/blog_writer.html' %}
 
-						{% latestposts %}
+						{% postcategories %}
 
 						{% include 'blog/blog-ads.html' %}
 
-						{% postcategories %}
+						{% include 'blog/blog-tags.html' %}
+
+						{% latestposts %}
 
 
 
@@ -319,23 +310,6 @@
 							<p class="text-bottom">
 								You can unsubscribe at any time
 							</p>
-						</div>
-						<div class="single-sidebar-widget tag-cloud-widget">
-							<h4 class="tagcloud-title">Tag Clouds</h4>
-							<ul>
-								<li><a href="#">Technology</a></li>
-								<li><a href="#">Fashion</a></li>
-								<li><a href="#">Architecture</a></li>
-								<li><a href="#">Fashion</a></li>
-								<li><a href="#">Food</a></li>
-								<li><a href="#">Technology</a></li>
-								<li><a href="#">Lifestyle</a></li>
-								<li><a href="#">Art</a></li>
-								<li><a href="#">Adventure</a></li>
-								<li><a href="#">Food</a></li>
-								<li><a href="#">Lifestyle</a></li>
-								<li><a href="#">Adventure</a></li>
-							</ul>
 						</div>
 					</div>
 				</div>
