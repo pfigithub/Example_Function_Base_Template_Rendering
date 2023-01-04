@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'robots',
     'debug_toolbar',
     'taggit',
+    'captcha',
     'django_summernote',
     'django.contrib.sitemaps',
     'app1.apps.App1Config',
@@ -96,6 +98,11 @@ SUMMERNOTE_CONFIG = {
             ['view', ['fullscreen', 'codeview', 'help']],
         ],
     }
+}
+
+# capcha admin setting
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',
 }
 
 
