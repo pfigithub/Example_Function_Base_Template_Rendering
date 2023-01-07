@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 {% load blog_tags %}
-
 {% block content %}
 
 <!DOCTYPE html>
@@ -143,7 +142,7 @@
 								<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{post.counted_views}} Views</a>
 									<span class="lnr lnr-eye"></span>
 								</p>
-								<p class="comments col-lg-12 col-md-12 col-6"><a href="#">{{comments|length}} Comments</a> <span
+								<p class="comments col-lg-12 col-md-12 col-6"><a href="#">{% comments_count post.id %} Comments</a> <span
 										class="lnr lnr-bubble"></span></p>
 							</div>
 						</div>
