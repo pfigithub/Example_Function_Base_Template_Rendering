@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'taggit',
     'captcha',
+    'accounts',
     'django_summernote',
     'django.contrib.sitemaps',
     'app1.apps.App1Config',
