@@ -5,9 +5,11 @@ from blog.forms import CommentForm
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.utils import timezone
 
 def blog_view(req, **kwargs):
-    posts = Post.objects.filter(status=1)
+    posts = Post.objects.filter(published_date__lte=timezone.now(), status = 1)
+    #posts = Post.objects.filter(status=1)
     if kwargs.get('cat_name') != None:
         posts = posts.filter(category__name= kwargs['cat_name'])
     if kwargs.get('author_username') != None:
@@ -30,6 +32,9 @@ def blog_view(req, **kwargs):
 
 
 def blog_single(req, pid):
+    counted = Post.objects.get(id=pid)
+    counted.counted_views = counted.counted_views + 1
+    counted.save()
     if req.method == 'POST':
         form = CommentForm(req.POST)
         if form.is_valid():
