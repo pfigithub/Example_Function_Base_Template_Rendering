@@ -7,9 +7,9 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
 
+
 def blog_view(req, **kwargs):
     posts = Post.objects.filter(published_date__lte=timezone.now(), status = 1)
-    #posts = Post.objects.filter(status=1)
     if kwargs.get('cat_name') != None:
         posts = posts.filter(category__name= kwargs['cat_name'])
     if kwargs.get('author_username') != None:
