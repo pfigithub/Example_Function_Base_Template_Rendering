@@ -20,6 +20,8 @@ from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from app1.sitemaps import StaticViewSitemap
 from blog.sitemaps import BlogSitemap
+from accounts.views import Home
+
 sitemaps = {'static': StaticViewSitemap, 'blog': BlogSitemap}
 
 
@@ -27,7 +29,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app1.urls')),
     path('blog/', include('blog.urls')),
-    path('accounts/', include('accounts.urls')),
+    # path('accounts/', include('django.contrib.auth.urls')),
+    # path('accounts/', include('accounts.urls')),
+    path('accounts/', include('allauth.urls')),
+    path('', Home.as_view(), name='home'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
          name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', include('robots.urls')),
