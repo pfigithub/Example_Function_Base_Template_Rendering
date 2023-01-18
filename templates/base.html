@@ -1,4 +1,6 @@
 {% load static %}
+{% load account %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -39,15 +41,13 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-sm-6 col-6 header-top-left">
-                        <ul>
-                            {% if request.user.is_authenticated %}
-                            <li><a href="#">Logged in as {{request.user.username}}</a></li>
-                            <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
-                            {% else %}
-                            <li><a href="{% url 'accounts:login' %}">Login</a></li>
-                            <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
-                            {% endif %}
-                        </ul>
+                        <!-- <h1>Django Allauth Tutorial</h1> -->
+                        {% if user.is_authenticated %}
+                        <p>Welcome {{ user.username }} !!!</p>
+                        <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                        {% else %}
+                        <a href="{% provider_login_url 'github' %}">Sign Up</a>
+                        {% endif %}
                     </div>
                     <div class="col-lg-6 col-sm-6 col-6 header-top-right">
                         <div class="header-social">
@@ -60,6 +60,14 @@
                 </div>
             </div>
         </div>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
+
         <div class="container main-menu">
             <div class="row align-items-center justify-content-between d-flex">
                 <div id="logo">
@@ -142,14 +150,13 @@
                             output.
                         </p>
                         <div>
-                            <form
-                                action="{% url 'web:newsletter' %}"
-                                method="post" class="subscription relative">
+                            <form action="{% url 'web:newsletter' %}" method="post" class="subscription relative">
                                 {% csrf_token %}
                                 <div class="input-group d-flex flex-row">
                                     <input name="email" placeholder="Email Address" onfocus="this.placeholder = ''"
                                         onblur="this.placeholder = 'Email Address '" required="" type="email">
-                                    <button class="btn bb-btn" type="submit"><span class="lnr lnr-location"></span></button>
+                                    <button class="btn bb-btn" type="submit"><span
+                                            class="lnr lnr-location"></span></button>
                                 </div>
                                 <div class="mt-10 info"></div>
                             </form>
