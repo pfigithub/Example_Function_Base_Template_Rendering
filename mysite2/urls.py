@@ -21,26 +21,45 @@ from django.contrib.sitemaps.views import sitemap
 from app1.sitemaps import StaticViewSitemap
 from blog.sitemaps import BlogSitemap
 from accounts.views import Home
+from app1.views import maintenance_view
 
 sitemaps = {'static': StaticViewSitemap, 'blog': BlogSitemap}
 
+site_ready = False
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('app1.urls')),
-    path('blog/', include('blog.urls')),
-    # path('accounts/', include('django.contrib.auth.urls')),
-    # path('accounts/', include('accounts.urls')),
-    path('accounts/', include('allauth.urls')),
-    path('', Home.as_view(), name='home'),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
-         name='django.contrib.sitemaps.views.sitemap'),
-    path('robots.txt', include('robots.urls')),
-    path('captcha/', include('captcha.urls')),
-    path('summernote/', include('django_summernote.urls')),
-    path('__debug__/', include('debug_toolbar.urls'))
-]
+if site_ready == False:
+    urlpatterns = [
+        path('admin/', maintenance_view),
+        path('', maintenance_view),
+        path('blog/', maintenance_view),
+        path('accounts/', maintenance_view),
+        path('', maintenance_view),
+        path('sitemap.xml', maintenance_view),
+        path('robots.txt', maintenance_view),
+        path('captcha/', maintenance_view),
+        path('summernote/', maintenance_view),
+        path('__debug__/', include('debug_toolbar.urls'))
+    ]
 
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+else:
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('', include('app1.urls')),
+        path('blog/', include('blog.urls')),
+        path('accounts/', include('allauth.urls')),
+        path('', Home.as_view(), name='home'),
+        path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+            name='django.contrib.sitemaps.views.sitemap'),
+        path('robots.txt', include('robots.urls')),
+        path('captcha/', include('captcha.urls')),
+        path('summernote/', include('django_summernote.urls')),
+        path('__debug__/', include('debug_toolbar.urls'))
+    ]
+
+
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
