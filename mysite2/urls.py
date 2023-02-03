@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
@@ -25,19 +25,11 @@ from app1.views import maintenance_view
 
 sitemaps = {'static': StaticViewSitemap, 'blog': BlogSitemap}
 
-site_ready = False
+site_ready = True
 
 if site_ready == False:
     urlpatterns = [
-        path('admin/', maintenance_view),
-        path('', maintenance_view),
-        path('blog/', maintenance_view),
-        path('accounts/', maintenance_view),
-        path('', maintenance_view),
-        path('sitemap.xml', maintenance_view),
-        path('robots.txt', maintenance_view),
-        path('captcha/', maintenance_view),
-        path('summernote/', maintenance_view),
+        re_path(r'.*', maintenance_view),
         path('__debug__/', include('debug_toolbar.urls'))
     ]
 
