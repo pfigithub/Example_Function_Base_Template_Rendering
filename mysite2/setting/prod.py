@@ -9,6 +9,8 @@ SECRET_KEY = 'django-insecure-tb)-wz+(h84ogs3^zgaw%lgvhp+6c#284@9pbfp0cjrs0kur81
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+COMPRESS_ENABLED = not DEBUG
+
 ALLOWED_HOSTS = []
 
 # sites framework
