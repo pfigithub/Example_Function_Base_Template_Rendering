@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 {% load blog_tags %}
+{% load compress %}
 
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
@@ -26,6 +27,7 @@
 	<!--
 			CSS
 			============================================= -->
+	{% compress css %}
 	<link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
 	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
 	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
@@ -35,6 +37,7 @@
 	<link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
 	<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
 	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	{% endcompress %}
 </head>
 
 <body>
@@ -214,7 +217,7 @@
 	
 	<!-- End recent-blog Area -->
 
-
+	{% compress js %}
 	<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
 	<script src="{% static 'js/popper.min.js' %}"></script>
 	<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
@@ -229,7 +232,9 @@
 	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
 	<script src="{% static 'js/mail-script.js' %}"></script>
 	<script src="{% static 'js/main.js' %}"></script>
+	{% endcompress %}
 </body>
 
 </html>
+
 {% endblock %}
