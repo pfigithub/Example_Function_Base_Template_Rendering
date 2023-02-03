@@ -68,6 +68,7 @@ COMPRESS_FILTERS = {
         'compressor.filters.jsmin.JSMinFilter',
     ]
 }
+
 HTML_MINIFY = True
 KEEP_COMMENTS_ON_MINIFYING = True
 
