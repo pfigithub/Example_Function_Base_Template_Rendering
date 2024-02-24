@@ -1,2 +1,2 @@
 # mysite2
- practising django
+ example for template rendering function base
